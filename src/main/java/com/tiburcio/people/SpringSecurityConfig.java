@@ -11,24 +11,25 @@ import org.springframework.security.core.userdetails.User.UserBuilder;
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-		UserBuilder users = User.withDefaultPasswordEncoder();
-		
-		auth.inMemoryAuthentication()
-			.withUser(users.username("tiburcio").password("tiburcio")
-			.roles("USER"));
-	}
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.authorizeRequests()
 			.antMatchers("/persons").permitAll()
+			.antMatchers("/person/**").hasAnyRole("ADMIN")
 			.anyRequest().authenticated()
 			.and()
-			.httpBasic()
-			.realmName("People");
+		    .httpBasic()
+		    .realmName("Your App");
+	}
+	
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+		UserBuilder users = User.withDefaultPasswordEncoder();
+		
+		auth.inMemoryAuthentication()
+			.withUser(users.username("tiburcio").password("tiburcio").roles("USER"))
+			.withUser(users.username("juan").password("juan").roles("ADMIN"));
 	}
 	
 }	
