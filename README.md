@@ -21,7 +21,8 @@ It's interesting that you take the cookies into account when testing the Basic A
 
 ![alt text](https://github.com/tcrurav/SpringCrudBasicAuthRestJPAMySQL/blob/master/cookies.gif)
 
-### Basic, basic, basic version with hard coded users
+
+### A Basic, basic, basic version with hard coded users
 
 For such a version of this project use git to checkout the second commit called: 
 
