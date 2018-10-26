@@ -59,6 +59,4 @@ public class Person implements Serializable {
 	public Person() {
 		
 	}
-	
-	
 }

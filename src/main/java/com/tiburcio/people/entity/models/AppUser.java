@@ -17,7 +17,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "user")
-public class PeopleUser implements Serializable{
+public class AppUser implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -66,8 +66,5 @@ public class PeopleUser implements Serializable{
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
-	}
-	
-	
-	
+	}	
 }

@@ -29,21 +29,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/persons").permitAll()
-			.antMatchers("/person/**").hasAnyRole("ROLE_ADMIN")
+			.antMatchers("/person/**").hasAnyRole("ADMIN")
 			.anyRequest().authenticated()
 			.and()
-		    .httpBasic()
-		    .realmName("People");
+		    .httpBasic();
 	}
 	
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-//		UserBuilder users = User.withDefaultPasswordEncoder();
-		
-//		auth.inMemoryAuthentication()
-//			.withUser(users.username("tiburcio").password("tiburcio").roles("USER"))
-//			.withUser(users.username("juan").password("juan").roles("ADMIN"));
-		
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{	
 		auth.userDetailsService(userDetailsService)
 			.passwordEncoder(passwordEncoder);
 	}

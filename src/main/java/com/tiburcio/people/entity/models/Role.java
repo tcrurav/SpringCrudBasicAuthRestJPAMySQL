@@ -24,6 +24,9 @@ public class Role implements Serializable {
 	@NotEmpty
 	private String role;
 
+	public Role() {
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -39,6 +42,4 @@ public class Role implements Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	
 }

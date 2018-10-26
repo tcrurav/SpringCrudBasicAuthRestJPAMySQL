@@ -27,19 +27,19 @@ public class PersonServiceImpl implements IPersonService{
 	@Override
 	public void save(Person person) {
 		personDao.save(person);
-		
 	}
 
 	@Override
 	public void deleteById(long id) {
 		personDao.deleteById(id);
-		
 	}
 
 	@Override
 	public void update(Person person, long id) {
-		
-		
+		personDao.findById(id).ifPresent((x) -> {
+			person.setId(id);
+			personDao.save(person);
+		});
 	}
 
 }

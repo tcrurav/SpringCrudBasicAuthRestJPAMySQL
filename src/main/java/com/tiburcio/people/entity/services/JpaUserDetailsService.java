@@ -13,37 +13,37 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tiburcio.people.entity.dao.IPeopleUserDao;
+import com.tiburcio.people.entity.dao.IAppUserDao;
 import com.tiburcio.people.entity.models.Role;
-import com.tiburcio.people.entity.models.PeopleUser;
+import com.tiburcio.people.entity.models.AppUser;
 
 @Service("JpaUserDetailsService")
 public class JpaUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	IPeopleUserDao userDao;
+	IAppUserDao userDao;
 	
 	@Override
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		PeopleUser peopleUser = userDao.findUserByUsername(username);
+		AppUser appUser = userDao.findUserByUsername(username);
 		
-		if(peopleUser == null) {
-			throw new UsernameNotFoundException("User " + username + "doesn't exist");
+		if(appUser == null) {
+			throw new UsernameNotFoundException("User " + username + " doesn't exist");
 		}
 		
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		
-		for(Role role: peopleUser.getRoles()) {
+		for(Role role: appUser.getRoles()) {
 			authorities.add(new SimpleGrantedAuthority(role.getRole()));
 		}
 		
 		if(authorities.isEmpty()) {
-			throw new UsernameNotFoundException("User " + username + "doesn't have any assigned role");
+			throw new UsernameNotFoundException("User " + username + " doesn't have any assigned role");
 		}
 		
-		return new User(peopleUser.getUsername(), peopleUser.getPassword(), true, true, true, true, authorities);
+		return new User(appUser.getUsername(), appUser.getPassword(), true, true, true, true, authorities);
 	}
 
 }
