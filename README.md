@@ -48,3 +48,5 @@ All you need is... some time and...
 
 * https://www.getpostman.com/. Used to test the RESTFul end points of the project.
 * https://giphy.com/. Used to create the animated gif.
+* https://gist.github.com/PurpleBooth/109311bb0361f32d87a2. A very complete template for README.md files.
+* https://www.dailycred.com/article/bcrypt-calculator. A helpfull bcrypt calculator.
