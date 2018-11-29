@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tiburcio.people.entity.models.Person;
 import com.tiburcio.people.entity.services.IPersonService;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = {"http://localhost:8100", "http://localhost:8080"})
 @RestController
 public class PersonController {
 	@Autowired
