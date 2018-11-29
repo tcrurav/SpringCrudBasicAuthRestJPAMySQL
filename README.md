@@ -46,6 +46,7 @@ All you need is... some time and...
 
 ## Acknowledgments
 
+* https://spring.io/understanding/CORS. Good link to understand CORS.
 * https://www.getpostman.com/. Used to test the RESTFul end points of the project.
 * https://giphy.com/. Used to create the animated gif.
 * https://gist.github.com/PurpleBooth/109311bb0361f32d87a2. A very complete template for README.md files.
